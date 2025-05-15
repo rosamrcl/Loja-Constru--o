@@ -3,7 +3,11 @@ $host="localhost";
 $user="root";
 $pass="";
 
-$conn = new mysqli($host, $user, $pass);
+$pdo = new PDO("mysql:host=$host",$user ,$pass);
+
+$pdo->exec("CREATE DATABASE IF NOT EXISTS estoque_construcao");
+
+
 
 
 ?>
