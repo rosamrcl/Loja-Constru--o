@@ -35,15 +35,12 @@ include('config.php');
             <option class="box" value="decrescente">Decrescente de nome</option>
             <option class="box" value="crescente_quantidade">Crescente de quantidade</option>
             <option class="box" value="decrescente_quantidade">Decrescente de quantidade</option>
-            <option class="box" value="id">id</option>
+            <option class="box" value="id">ID</option>
             </select>
             <input class="btn" type="submit" value="Buscar">
     </form>
     <div class="box">
                 <?php                
-                $stmt=$conn->prepare("SELECT * FROM categoria");
-                $stmt->execute();
-                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 
                 <h2>Categoria</h2>
@@ -55,8 +52,8 @@ include('config.php');
                     </tr>
                     <?php foreach ($result as $product): ?>
                         <tr>
-                            <td><?=$product['id_categoria'];?></td>
-                            <td><?=$product['nome_categoria'];?></td>
+                            <td><?=$product['id'];?></td>
+                            <td><?=$product['nome'];?></td>
 
                         </tr>
                         <?php endforeach; ?>
@@ -171,5 +168,8 @@ include('config.php');
     
         
 </section>
+<footer class="footer" id="footer">
+    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+</footer>
 </body>
 </html>

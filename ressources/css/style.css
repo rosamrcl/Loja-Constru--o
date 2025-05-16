@@ -30,8 +30,8 @@ section{
     padding: 2rem 9%;
 }
 .header {
+    position: fixed;
     padding: 2rem 9%;
-    
     top: 0;
     right: 0;
     left: 0;
@@ -252,5 +252,16 @@ section{
     margin: 1rem;
     padding: 1rem;
     border: var(--border);
+}
+
+.footer{
+    background: var(--bg);
+    padding: 2rem 9%;
+}
+
+.footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
