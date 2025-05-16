@@ -18,16 +18,54 @@ include('config.php');
         <nav class="navbar">
             <a href="#cadastro">Cadastro</a>
             <a href="#estoque">Estoque</a>
+            <a href="#busca">Buscar</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
+<section class="busca" id="busca">
+    <div class="row">
+        <div class="image">
+            <img src="./ressources/img/banner2.png" alt="">
+        </div>
+        <form action="select.php" method="get">        
+            <input type="text" class="box">
+            <input class="btn" type="submit" value="Buscar">
+    </form>
+    <div class="box">
+                <?php                
+                $stmt=$conn->prepare("SELECT * FROM categoria");
+                $stmt->execute();
+                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+                ?>
+                
+                <h2>Categoria</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        
+                    </tr>
+                    <?php foreach ($result as $product): ?>
+                        <tr>
+                            <td><?=$product['id_categoria'];?></td>
+                            <td><?=$product['nome_categoria'];?></td>
+
+                        </tr>
+                        <?php endforeach; ?>
+                </table>       
+    
+            </div>
+    </div>
+    
+</section>
 <section class="cadastro" id="cadastro">
     <div class="row">
-        <form action="insertDadoCategoria.php" method="post">
+        <form action="insertDadoCategoria.php" method="POST">
             <label for="categoria">Categoria</label>
-            <input class="box" type="text" name="categoria_id" id="categoria_id" placeholder="Categoria">
+            <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
             <input class="btn" type="submit" value="Enviar">
         </form>
+
         <form action="insertDado.php" method="POST">
             
             <label for="nome">Nome</label>
@@ -48,15 +86,17 @@ include('config.php');
             <input class="btn" type="submit" value="Enviar">
 
         </form>
+
         <div class="image">
             <img src="./ressources/img/banner.png" alt="">
         </div>
     </div>
 
         
-    </section>
-    <section class="estoque" id="estoque">
+</section>
+<section class="estoque" id="estoque">
         <div class="row">
+            
             <div class="box">
                 <?php                
                 $stmt=$conn->prepare("SELECT * FROM categoria");
@@ -76,7 +116,7 @@ include('config.php');
                             <td><?=$product['id_categoria'];?></td>
                             <td><?=$product['nome_categoria'];?></td>
                             
-                            <td><a class="btn" href="update.php?id=<?= $product['id_categoria'] ?>">Editar</a><a class="delete-btn" href="excluir.php?id=<?=$product['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
+                            <td><a class="btn" href="updatecategoria.php?id_categoria=<?= $product['id_categoria'] ?>">Editar</a><a class="delete-btn" href="deletecategoria.php?id_categoria=<?=$product['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
                             
                         </tr>
                         <?php endforeach; ?>
@@ -106,11 +146,11 @@ include('config.php');
                         <tr>
                             <td><?=$product['id'];?></td>
                             <td><?=$product['nome'];?></td>
-                            <td><?=$product['quantidade'];?>Kg</td>
+                            <td><?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
                             <td><?=$product['categoria_id'];?></td>
                             <td>R$<?=$product['preco'];?></td>
-                            <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="excluir.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
+                            <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="delete.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
                             
                         </tr>
                         <?php endforeach; ?>
@@ -122,6 +162,6 @@ include('config.php');
         </div>
     
         
-    </section>
+</section>
 </body>
 </html>

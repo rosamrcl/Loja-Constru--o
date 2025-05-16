@@ -1,17 +1,16 @@
 <?php
 include ('config.php');
 
-$pdo = new PDO ($db, $user ,$pass);
 
-
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $categoria= $_POST['categoria'];
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    $nome_categoria = $_POST['nome_categoria'];
 }
 
 
-$stmt = $pdo->prepare("INSERT INTO categoria (nome_categoria) VALUES (?)");
+$stmt = $conn->prepare("INSERT INTO categoria (nome_categoria)  VALUES (?)");
 
-if ($stmt->execute([$categoria])){
+
+if ($stmt->execute([$nome_categoria])){
     header("Location: index.php");
     exit();
 }else{

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         $categoria_id=$_POST['categoria_id'];
 }
         
-        $stmt = $pdo->prepare("INSERT INTO produto (nome, quantidade, unidade, preco, categoria_id) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("UPDATE produto  SET (nome, quantidade, unidade, preco, categoria_id) VALUES (?, ?, ?, ?, ?)");
 
 
         if ($stmt->execute([$nome, $quantidade, $unidade, $preco, $categoria_id])){
