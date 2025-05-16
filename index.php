@@ -27,8 +27,16 @@ include('config.php');
         <div class="image">
             <img src="./ressources/img/banner2.png" alt="">
         </div>
+        
         <form action="select.php" method="get">        
-            <input type="text" class="box">
+            <label for="filtragem">Escolha a filtragem:</label>
+            <select class="box" id="filtragem">
+            <option class="box" value="crescente">Crescente de nome</option>
+            <option class="box" value="decrescente">Decrescente de nome</option>
+            <option class="box" value="crescente_quantidade">Crescente de quantidade</option>
+            <option class="box" value="decrescente_quantidade">Decrescente de quantidade</option>
+            <option class="box" value="id">id</option>
+            </select>
             <input class="btn" type="submit" value="Buscar">
     </form>
     <div class="box">
