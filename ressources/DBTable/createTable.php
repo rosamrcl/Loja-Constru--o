@@ -13,7 +13,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR (250) NOT NULL,
 quantidade INT NOT NULL,
 unidade INT NOT NULL,
-preco INT NOT NULL,
+preco DECIMAL(10, 2) NOT NULL,
 categoria_id INT NOT NULL,
 FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 )

@@ -1,3 +1,14 @@
+<?php
+include('config.php');
+
+// $pdo = new PDO ($db, $user ,$pass);
+
+$stmt=$conn->prepare("SELECT * FROM produto");
+$stmt->execute();
+$result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,18 +29,30 @@
     </header>
 <section class="cadastro" id="cadastro">
     <div class="row">
+        <form action="insertDadoCategoria.php" method="post">
+            <label for="categoria">Categoria</label>
+            <input class="box" type="text" name="categoria_id" id="categoria_id" placeholder="Categoria">
+            <input class="btn" type="submit" value="Enviar">
+        </form>
         <form action="insertDado.php" method="POST">
             
+            <label for="nome">Nome</label>
             <input class="box" type="text" name="nome" id="nome" placeholder="Nome">
-            
+
+            <label for="quantidade">Quantidade</label>
             <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade">
 
-            <input class="box" type="number" name="quantidade" id="unidade" placeholder="Unidade">
+            <label for="unidade">Unidade</label>
+            <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade">
 
-            <input class="box" type="number" name="preco" id="preco" placeholder="Preço">
-            
-            
+            <label for="categoria">Categoria</label>
+            <input class="box" type="text" name="categoria" id="categoria" placeholder="Categoria">
+
+            <label for="preco">Preço</label>
+            <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999">
+                        
             <input class="btn" type="submit" value="Enviar">
+
         </form>
         <div class="image">
             <img src="./ressources/img/banner.png" alt="">
@@ -51,19 +74,21 @@
                         <th>Nome</th>
                         <th>Quantidade</th>
                         <th>Unidade</th>
+                        <th>Categoria</th>
                         <th>Preço</th>
                     </tr>
-                    <?php while ($product = $result->fetch_assoc()): ?>
+                    <?php foreach ($result as $product): ?>
                         <tr>
                             <td><?=$product['id'];?></td>
                             <td><?=$product['nome'];?></td>
                             <td><?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
-                            <td><?=$product['preco'];?></td>
+                            <td><?=$product['categoria'];?></td>
+                            <td>R$<?=$product['preco'];?></td>
                             <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="excluir.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
                             
                         </tr>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                 </table>       
     
             </div>
