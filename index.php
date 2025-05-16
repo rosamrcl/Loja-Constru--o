@@ -1,12 +1,6 @@
 <?php
 include('config.php');
 
-// $pdo = new PDO ($db, $user ,$pass);
-
-$stmt=$conn->prepare("SELECT * FROM produto");
-$stmt->execute();
-$result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +39,8 @@ $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
             <label for="unidade">Unidade</label>
             <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade">
 
-            <label for="categoria">Categoria</label>
-            <input class="box" type="text" name="categoria" id="categoria" placeholder="Categoria">
+            <label for="categoria_id">Categoria</label>
+            <input class="box" type="text" name="categoria_id" id="categoria_id" placeholder="Categoria">
 
             <label for="preco">Preço</label>
             <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999">
@@ -66,7 +60,42 @@ $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="image">
                 <img src="./ressources/img/banner2.png" alt="">
             </div>
+
             <div class="box">
+                <?php                
+                $stmt=$conn->prepare("SELECT * FROM categoria");
+                $stmt->execute();
+                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+                ?>
+                
+                <h2>Categoria</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        
+                    </tr>
+                    <?php foreach ($result as $product): ?>
+                        <tr>
+                            <td><?=$product['id_categoria'];?></td>
+                            <td><?=$product['nome_categoria'];?></td>
+                            
+                            <td><a class="btn" href="update.php?id=<?= $product['id_categoria'] ?>">Editar</a><a class="delete-btn" href="excluir.php?id=<?=$product['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
+                            
+                        </tr>
+                        <?php endforeach; ?>
+                </table>       
+    
+            </div>
+            
+            <div class="box">
+                <?php
+                $stmt=$conn->prepare("SELECT * FROM produto");                
+                $stmt->execute();
+                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                ?>
+                
                 <h2>Produtos em estoque</h2>
                 <table>
                     <tr>
@@ -81,9 +110,9 @@ $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <td><?=$product['id'];?></td>
                             <td><?=$product['nome'];?></td>
-                            <td><?=$product['quantidade'];?></td>
+                            <td>Kg<?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
-                            <td><?=$product['categoria'];?></td>
+                            <td><?=$product['categoria_id'];?></td>
                             <td>R$<?=$product['preco'];?></td>
                             <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="excluir.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
                             

@@ -9,13 +9,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 }
 
 
-$stmt = $pdo->prepare("INSERT INTO categoria (nome) VALUES (?)");
+$stmt = $pdo->prepare("INSERT INTO categoria (nome_categoria) VALUES (?)");
 
 if ($stmt->execute([$categoria])){
     header("Location: index.php");
     exit();
 }else{
-    echo "Erro aos cadastrar!";
+    echo "Erro ao cadastrar!";
 }
 
 ?>
