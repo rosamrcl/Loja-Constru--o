@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap');
+:root{
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    --border: .1rem solid rgba(0,0,0,.1);
+    --bg:#0f0f0f;
+    --link:#E3A72F;
+    --white:#FAF9F6;
+    --delete:#d11212;
+    --letra-btn:#3E3E3E;
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    transition: all .2s ease-out;
+    font-family: "Xanh Mono", monospace;
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+section{
+    padding: 2rem 9%;
+}
+.header {
+    padding: 2rem 9%;
+    
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background: var(--bg);
+}
+.header .logo img{
+    width: 4rem;
+    border-radius: 50%;
+}
+.header  .navbar a{
+    margin-left: 2rem;
+    font-size: 2.5rem;
+    color: var(--link);
+}
+.header  .navbar a:hover{
+    color: var(--white);
+}
+#menu-btn{
+    font-size: 2.5rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    border: var(--border);
+    color: var(--letra-btn);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+.delete-btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    border: var(--border);
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn{
+    background: var(--link);
+}
+.delete-btn{
+    background: var(--delete);
+}
+.btn:hover, .delete-btn:hover{
+    opacity: 0.8;
+}
+.cadastro .row {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 1.5rem;
+    align-items: center;
+}
+.cadastro .row form{
+    flex: 1 1 40rem;
+    background: var(--white);
+    border-radius: .5rem;
+    padding: 2rem 2.5rem;
+    box-shadow: var(--box-shadow);
+    width: 50rem;
+    
+}
+.cadastro .row form .box{
+    margin: 2rem 0;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    font-size: 2rem;
+    color: var(--bg);
+    width: 100%;
+}
+.cadastro form h3{
+    color: var(--link);
+    padding-bottom:1rem;
+    font-size: 2.5rem;
+    text-align: center;
+}
+.cadastro .row .image{
+    flex: 1 1 40rem;
+}
+.cadastro .row .image img{
+    width: 100%;
+}
+
+.estoque .row{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 1.5rem;
+    align-items: center;
+}
+.estoque .row table{
+    flex: 1 1 40rem;
+    background: var(--white);
+    border-radius: .5rem;
+    padding: 2rem 2.5rem;
+    box-shadow: var(--box-shadow);
+    width: 50rem;
+}
+.estoque .row .box h2{
+    font-size: 3rem;
+}
+.estoque .row .box table {
+    margin: 1rem 0;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    background-color: var(--bg2);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--letra);
+    width: 100%;
+    text-align: center;
+}
+
+.estoque .row .box table tr th{
+    color: var(--bg);
+    width: fit-content;
+    margin: 1rem;
+    padding: 1rem;
+    border: var(--border);
+}
+
+.estoque .row .box table tr td{
+    color: var(--bg);
+    width: fit-content;
+    margin: 1rem;
+    padding: 1rem;
+    border: var(--border);
+}

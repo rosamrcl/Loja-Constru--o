@@ -8,6 +8,4 @@ $pdo = new PDO("mysql:host=$host",$user ,$pass);
 $pdo->exec("CREATE DATABASE IF NOT EXISTS estoque_construcao");
 
 
-
-
 ?>
