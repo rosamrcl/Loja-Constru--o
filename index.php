@@ -57,10 +57,6 @@ include('config.php');
     </section>
     <section class="estoque" id="estoque">
         <div class="row">
-            <div class="image">
-                <img src="./ressources/img/banner2.png" alt="">
-            </div>
-
             <div class="box">
                 <?php                
                 $stmt=$conn->prepare("SELECT * FROM categoria");
@@ -110,7 +106,7 @@ include('config.php');
                         <tr>
                             <td><?=$product['id'];?></td>
                             <td><?=$product['nome'];?></td>
-                            <td>Kg<?=$product['quantidade'];?></td>
+                            <td><?=$product['quantidade'];?>Kg</td>
                             <td><?=$product['unidade'];?></td>
                             <td><?=$product['categoria_id'];?></td>
                             <td>R$<?=$product['preco'];?></td>
