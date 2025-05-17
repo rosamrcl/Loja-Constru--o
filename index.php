@@ -83,7 +83,7 @@ include('config.php');
             <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade">
 
             <label for="categoria_id">Categoria</label>
-            <input class="box" type="text" name="categoria_id" id="categoria_id" placeholder="Categoria">
+            <input class="box" type="number" name="categoria_id" id="categoria_id" placeholder="Categoria">
 
             <label for="preco">Preço</label>
             <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999">
