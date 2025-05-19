@@ -18,51 +18,11 @@ include('config.php');
         <nav class="navbar">
             <a href="#cadastro">Cadastro</a>
             <a href="#estoque">Estoque</a>
-            <a href="#busca">Buscar</a>
+            <a href="search.php">Buscar</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
-<section class="busca" id="busca">
-    <div class="row">
-        <div class="image">
-            <img src="./ressources/img/banner2.png" alt="">
-        </div>
-        
-        <form action="select.php" method="get">        
-            <label for="filtragem">Escolha a filtragem:</label>
-            <select class="box" id="filtragem">
-            <option class="box" value="crescente">Crescente de nome</option>
-            <option class="box" value="decrescente">Decrescente de nome</option>
-            <option class="box" value="crescente_quantidade">Crescente de quantidade</option>
-            <option class="box" value="decrescente_quantidade">Decrescente de quantidade</option>
-            <option class="box" value="id">ID</option>
-            </select>
-            <input class="btn" type="submit" value="Buscar">
-    </form>
-    <div class="box">
-                <?php                
-                ?>
-                
-                <h2>Categoria</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        
-                    </tr>
-                    <?php foreach ($result as $product): ?>
-                        <tr>
-                            <td><?=$product['id'];?></td>
-                            <td><?=$product['nome'];?></td>
 
-                        </tr>
-                        <?php endforeach; ?>
-                </table>       
-    
-            </div>
-    </div>
-    
-</section>
 <section class="cadastro" id="cadastro">
     <div class="row">
         <form action="insertDadoCategoria.php" method="POST">
