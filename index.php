@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+include('logic.php');
 
 ?>
 
@@ -18,7 +19,6 @@ include('config.php');
         <nav class="navbar">
             <a href="#cadastro">Cadastro</a>
             <a href="#estoque">Estoque</a>
-            <a href="search.php">Buscar</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
@@ -31,24 +31,28 @@ include('config.php');
             <input class="btn" type="submit" value="Enviar">
         </form>
 
-        <form action="insertDado.php" method="POST">
-            
+        <h2>Inserir Produto</h2>
+        <form  method="POST">            
             <label for="nome">Nome</label>
-            <input class="box" type="text" name="nome" id="nome" placeholder="Nome">
+            <input class="box" type="text" name="nome" id="nome" placeholder="Nome" required>
 
             <label for="quantidade">Quantidade</label>
-            <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade">
+            <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" required>
 
             <label for="unidade">Unidade</label>
-            <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade">
-
-            <label for="categoria_id">Categoria</label>
-            <input class="box" type="number" name="categoria_id" id="categoria_id" placeholder="Categoria">
+            <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade" required>
 
             <label for="preco">Preço</label>
-            <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999">
-                        
-            <input class="btn" type="submit" value="Enviar">
+            <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999" required>
+
+            <select class="box" name="categoria_id" required>
+            <option class="box" value="<?= $categoria['id'] ?>">Categoria</option>
+            <?php foreach ($categorias as $categoria): ?>
+                <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
+            <?php endforeach; ?>
+            </select>categoria
+
+            <input class="btn" name="adicionar" type="submit" value="Enviar">
 
         </form>
 
@@ -61,8 +65,46 @@ include('config.php');
 </section>
 <section class="estoque" id="estoque">
         <div class="row">
-            
-            <div class="box">
+            <form method="get">    
+                <select class="box" id="filtragem" onchange="this.form.submit()">
+                    <option class="box" value="">Escolha a filtragem: </option>
+                    <option class="box" value="crescente">Crescente de nome (A-Z)</option>
+                    <option class="box" value="decrescente">Decrescente de nome(z-A)</option>
+                    <option class="box" value="crescente_quantidade">Crescente de quantidade(↑)</option>
+                    <option class="box" value="decrescente_quantidade">Decrescente de quantidade (↓)</option>
+                    <option class="box" value="id">ID</option>
+                </select>
+            </form>
+        <div class="box">             
+                <h2>Produtos Cadastrados</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Unidade</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                        
+                    </tr>
+                    <?php foreach ($produtos as $product): ?>
+                        <tr class="<?= $product['quantidade'] <= 5 ? 'low-stock' : '' ?>">
+                            <td><?=$product['id'];?></td>
+                            <td><?=$product['nome'];?></td>
+                            <td><?=$product['quantidade'];?></td>
+                            <td><?=$product['unidade'];?></td>
+                            <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
+                            <td><?=$product['categoria'];?></td>
+                            <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="delete.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
+                        </tr>
+                        <?php endforeach; ?>
+                </table>       
+    
+            </div>
+        </div>
+
+        <div class="box">
                 <?php                
                 $stmt=$conn->prepare("SELECT * FROM categoria");
                 $stmt->execute();
@@ -82,40 +124,6 @@ include('config.php');
                             <td><?=$product['nome_categoria'];?></td>
                             
                             <td><a class="btn" href="updatecategoria.php?id_categoria=<?= $product['id_categoria'] ?>">Editar</a><a class="delete-btn" href="deletecategoria.php?id_categoria=<?=$product['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
-                            
-                        </tr>
-                        <?php endforeach; ?>
-                </table>       
-    
-            </div>
-            
-            <div class="box">
-                <?php
-                $stmt=$conn->prepare("SELECT * FROM produto");                
-                $stmt->execute();
-                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-                
-                ?>
-                
-                <h2>Produtos em estoque</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Quantidade</th>
-                        <th>Unidade</th>
-                        <th>Categoria</th>
-                        <th>Preço</th>
-                    </tr>
-                    <?php foreach ($result as $product): ?>
-                        <tr>
-                            <td><?=$product['id'];?></td>
-                            <td><?=$product['nome'];?></td>
-                            <td><?=$product['quantidade'];?></td>
-                            <td><?=$product['unidade'];?></td>
-                            <td><?=$product['categoria_id'];?></td>
-                            <td>R$<?=$product['preco'];?></td>
-                            <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="delete.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
                             
                         </tr>
                         <?php endforeach; ?>

@@ -1,27 +1,8 @@
 <?php
-include ('config.php');
+include('config.php');
+include('logic.php');
 
-
-if ($_SERVER['REQUEST_METHOD'] ==='POST'){
-        $nome=$_POST['nome'];
-        $quantidade=$_POST['quantidade'];
-        $unidade=$_POST['unidade'];
-        $preco=$_POST['preco'];
-        $categoria_id=$_POST['categoria_id'];
-}
-        
-        $stmt = $pdo->prepare("UPDATE produto SET nome = ?, quantidade = ?, unidade = ?, preco = ?, categoria_id = ? WHERE id = ?");
-
-
-        if ($stmt->execute([$_POST[ 'nome'], $_POST ['quantidade'], $_POST ['unidade'], $_POST ['preco'], $_POST ['categoria_id'], $_POST ['id']])){
-            header("Location: index.php");
-            exit();
-        }else{
-    echo "Erro ao Atualizar!";
-}
-    
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,46 +19,43 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST'){
         <nav class="navbar">
             <a href="#cadastro">Cadastro</a>
             <a href="#estoque">Estoque</a>
-            <a href="#busca">Buscar</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>
     </header>
 
 <section class="cadastro" id="cadastro">
     <div class="row">
-
-
-        <form  method="POST">
-
-            <input type="hidden" name="id" value="<?php echo $dado['id']; ?>">
-            
-            <label for="nome">Nome</label>
-            <input class="box" type="text" name="nome" id="nome" placeholder="Nome" value="<?php echo $dado['nome']; ?>">
-
-            <label for="quantidade">Quantidade</label>
-            <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?php echo $dado['quantidade']; ?>">
-
-            <label for="unidade">Unidade</label>
-            <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade" value="<?php echo $dado['unidade']; ?>">
-
-            <label for="categoria_id">Categoria</label>
-            <input class="box" type="number" name="categoria_id" id="categoria_id" placeholder="Categoria" value="<?php echo $dado['categoria_id']; ?>">
-
-            <label for="preco">Preço</label>
-            <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"  required maxlength="10" min="0" max="9999999999" value="<?php echo $dado['preco']; ?>">
+        <div class="box">
+            <form  method="POST">
+                <input class="box" type="hidden" name="id" value="<?=$product['id']?>">           
+                <label for="nome">Nome</label>
+                <input class="box" type="text" name="nome" id="nome" placeholder="Nome"  value="<?=$product['nome']?>">
+    
+                <label for="quantidade">Quantidade</label>
+                <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade"  value="<?=$product['quantidade']?>">
+    
+                <label for="unidade">Unidade</label>
+                <input class="box" type="number" name="unidade" id="unidade" placeholder="Unidade" value="<?=$product['unidade']?>">
+    
+                <label for="preco">Preço</label>
+                <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"   maxlength="10" min="0" max="9999999999"  value="<?=$product['preco']?>">
+    
+                <select class="box" name="categoria_id" >
+                <option class="box" value="">Categoria</option>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria['id'] ?>"><?= $categoria['id'] == $product['categoria_id'] ? 'selected': '' ?><?= $categoria['nome']?></option>
+                <?php endforeach; ?>
+                </select>categoria
+    
                         
-            <input class="btn" type="submit" value="Enviar">
-
-        </form>
-
+            <input class="btn" name="update" type="submit" value="Atualizar">
+            </form>
+        </div>
         <div class="image">
             <img src="./ressources/img/banner.png" alt="">
         </div>
     </div>
-
-        
 </section>
-
 <footer class="footer" id="footer">
     <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
 </footer>
