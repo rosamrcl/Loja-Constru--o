@@ -195,7 +195,7 @@ section{
     color: var(--bg);
     width: 100%;
 }
-.cadastro form h3{
+.cadastro form h2{
     color: var(--link);
     padding-bottom:1rem;
     font-size: 2.5rem;
