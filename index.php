@@ -26,12 +26,14 @@ include('logic.php');
 <section class="cadastro" id="cadastro">
     <div class="row">
         <form action="insertDadoCategoria.php" method="POST">
+            <h2>Cadastrar Categoria</h2>
             <label for="categoria">Categoria</label>
             <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
             <input class="btn" type="submit" value="Enviar">
         </form>
 
-        <form  method="POST">            
+        <form  method="POST">   
+            <h2>Cadastrar Produto</h2>         
             
             <label for="nome">Nome</label>
             <input class="box" type="text" name="nome" id="nome" placeholder="Nome" required>
@@ -89,9 +91,9 @@ include('logic.php');
                         
                     </tr>
                     <?php foreach ($produtos as $product): ?>
-                        <tr class="<?=$product['quantidade'] <= 5 ? 'low-stock' : '' ?>">
+                        <tr>
                             <td><?=$product['id'];?></td>
-                            <td><?=$product['nome'];?></td>
+                            <td><?=($product['quantidade'] <= 5 ? '⚠️' : '') . htmlspecialchars($product['nome']);?></td>
                             <td><?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
                             <td><?=$product['categoria'];?></td>
