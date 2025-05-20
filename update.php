@@ -45,7 +45,7 @@ include('index.php');
                 <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"   maxlength="10" min="0" max="9999999999"  value="<?=$product['preco']?>">
     
                 <select class="box" name="categoria_id" required>
-                <option class="box" value="<?= $categoria['id'] ?>">Categoria</option>
+                <option class="box" value="<?= $categoria['id_categoria'] ?>">Categoria</option>
                 <?php foreach ($categorias as $categoria): ?>
                     <option value="<?= $categoria['id_categoria'] ?>"><?= $categoria['nome_categoria'] ?></option>
                 <?php endforeach; ?>

@@ -94,8 +94,8 @@ include('logic.php');
                             <td><?=$product['nome'];?></td>
                             <td><?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
-                            <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
                             <td><?=$product['categoria'];?></td>
+                            <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
                             <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
                         </tr>
                         <?php endforeach; ?>
