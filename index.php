@@ -66,7 +66,7 @@ include('logic.php');
 <section class="estoque" id="estoque">
         <div class="row">
             <form method="get">    
-                <select class="box" id="filtragem" onchange="this.form.submit()">
+                <select name="filtro" class="box" id="filtragem" onchange="this.form.submit()">
                     <option class="box" value="">Escolha a filtragem: </option>
                     <option class="box" value="crescente">Crescente de nome (A-Z)</option>
                     <option class="box" value="decrescente">Decrescente de nome(Z-A)</option>
@@ -89,7 +89,7 @@ include('logic.php');
                         
                     </tr>
                     <?php foreach ($produtos as $product): ?>
-                        <tr class="<?= $product['quantidade'] <= 5 ? 'low-stock' : '' ?>">
+                        <tr class="<?=$product['quantidade'] <= 5 ? 'low-stock' : '' ?>">
                             <td><?=$product['id'];?></td>
                             <td><?=$product['nome'];?></td>
                             <td><?=$product['quantidade'];?></td>
