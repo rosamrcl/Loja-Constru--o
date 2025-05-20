@@ -96,40 +96,15 @@ include('logic.php');
                             <td><?=$product['unidade'];?></td>
                             <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
                             <td><?=$product['categoria'];?></td>
-                            <td><a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a><a class="delete-btn" href="delete.php?id=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
+                            <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
                         </tr>
                         <?php endforeach; ?>
-                </table>       
-    
+                </table>  
+
             </div>
         </div>
 
-        <div class="box">
-                <?php                
-                $stmt=$pdo->prepare("SELECT * FROM categoria");
-                $stmt->execute();
-                $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-                ?>
-                
-                <h2>Categoria</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        
-                    </tr>
-                    <?php foreach ($result as $product): ?>
-                        <tr>
-                            <td><?=$product['id_categoria'];?></td>
-                            <td><?=$product['nome_categoria'];?></td>
-                            
-                            <td><a class="btn" href="updatecategoria.php?id_categoria=<?= $product['id_categoria'] ?>">Editar</a><a class="delete-btn" href="deletecategoria.php?id_categoria=<?=$product['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>            
-                            
-                        </tr>
-                        <?php endforeach; ?>
-                </table>       
-    
-            </div>
+        
             
 
         </div>

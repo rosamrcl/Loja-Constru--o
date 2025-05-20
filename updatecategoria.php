@@ -8,7 +8,7 @@ include ('config.php');
         $nome_categoria=$_POST['nome_categoria'];
     }
         
-$stmt = $conn->prepare("UPDATE categoria  SET nome_categoria=:nome_categoria WHERE id_categoria=:id_categoria");
+$stmt = $pdo->prepare("UPDATE categoria  SET nome_categoria=:nome_categoria WHERE id_categoria=:id_categoria");
 
 
         if ($stmt->execute([$nome_categoria])){
