@@ -94,79 +94,7 @@ section{
 .btn:hover, .delete-btn:hover{
     opacity: 0.8;
 }
-.busca .row{
-    display: flex;
-    flex-wrap: wrap-reverse;
-    gap: 1.5rem;
-    align-items: center;
-}
-.busca .row form{
-    flex: 1 1 40rem;
-    background: var(--white);
-    border-radius: .5rem;
-    padding: 2rem 2.5rem;
-    box-shadow: var(--box-shadow);
-    width: 50rem;
-    
-}
-.busca .row form .box{
-    margin: 2rem 0;
-    padding: 1.4rem;
-    border-radius: .5rem;
-    background-color: var(--white);
-    box-shadow: var(--box-shadow);
-    border: var(--border);
-    font-size: 2rem;
-    color: var(--bg);
-    width: 100%;
-}
-.busca form h3{
-    color: var(--link);
-    padding-bottom:1rem;
-    font-size: 2.5rem;
-    text-align: center;
-}
-.busca .row .image{
-    flex: 1 1 40rem;
-}
 
-.busca .row .image img{
-    width: 100%;
-}
-.busca .row table{
-    flex: 1 1 40rem;
-    background: var(--white);
-    border-radius: .5rem;
-    padding: 2rem 2.5rem;
-    box-shadow: var(--box-shadow);
-    width: 50rem;
-}
-.busca .row .box table {
-    margin: 1rem 0;
-    padding: 1.4rem;
-    border-radius: .5rem;
-    background-color: var(--bg2);
-    box-shadow: var(--box-shadow);
-    border: var(--border);
-    font-size: 1.8rem;
-    color: var(--letra);
-    width: 100%;
-    text-align: center;
-}
-.busca .row .box table tr th{
-    color: var(--bg);
-    width: fit-content;
-    margin: 1rem;
-    padding: 1rem;
-    border: var(--border);
-}
-.busca .row .box table tr td{
-    color: var(--bg);
-    width: fit-content;
-    margin: 1rem;
-    padding: 1rem;
-    border: var(--border);
-}
 
 
 .cadastro .row {
@@ -224,6 +152,7 @@ section{
 }
 .estoque .row .box h2{
     font-size: 3rem;
+    color: var(--link);
 }
 
 .estoque .row .box table {
@@ -234,7 +163,7 @@ section{
     border: var(--border);
     font-size: 1.8rem;
     color: var(--letra);
-    width: 100%;
+    width: 50%;
     text-align: center;
 }
 
@@ -252,6 +181,10 @@ section{
     margin: 1rem;
     padding: 1rem;
     border: var(--border);
+}
+.estoque .row .box select{
+    border: var(--border);
+    font-size: 2rem;
 }
 
 .footer{

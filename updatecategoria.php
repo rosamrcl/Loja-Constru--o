@@ -1,8 +1,5 @@
 <?php
-include ('config.php');
-
-
-    if ($_SERVER['REQUEST_METHOD'] ==='GET'){
+if ($_SERVER['REQUEST_METHOD'] ==='GET'){
             $id_categoria=$_GET['id_categoria'];
     }elseif($_SERVER['REQUEST_METHOD'] ==='POST'){
         $nome_categoria=$_POST['nome_categoria'];
@@ -17,9 +14,5 @@ $stmt = $pdo->prepare("UPDATE categoria  SET nome_categoria=:nome_categoria WHER
         }else{
     echo "Erro ao cadastrar!";
 }
-    
-
-
-
 
 ?>

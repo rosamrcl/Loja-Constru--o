@@ -1,7 +1,4 @@
 <?php
-include ('config.php');
-
-
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $nome_categoria = $_POST['nome_categoria'];
 }

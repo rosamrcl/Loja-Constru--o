@@ -25,12 +25,13 @@ include('logic.php');
 
 <section class="cadastro" id="cadastro">
     <div class="row">
-        <form action="insertDadoCategoria.php" method="POST">
+        <form action="/laragon/www/Back-End/insertDadoCategoria.php" method="POST">
             <h2>Cadastrar Categoria</h2>
             <label for="categoria">Categoria</label>
             <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
             <input class="btn" type="submit" value="Enviar">
         </form>
+        
 
         <form  method="POST">   
             <h2>Cadastrar Produto</h2>         
@@ -67,16 +68,19 @@ include('logic.php');
 </section>
 <section class="estoque" id="estoque">
         <div class="row">
-            <form method="get">    
-                <select name="filtro" class="box" id="filtragem" onchange="this.form.submit()">
-                    <option class="box" value="">Escolha a filtragem: </option>
-                    <option class="box" value="crescente">Crescente de nome (A-Z)</option>
-                    <option class="box" value="decrescente">Decrescente de nome(Z-A)</option>
-                    <option class="box" value="crescente_quantidade">Crescente de quantidade(↑)</option>
-                    <option class="box" value="decrescente_quantidade">Decrescente de quantidade (↓)</option>
-                    <option class="box" value="id">ID</option>
-                </select>
-            </form>
+            <div class="box">
+                <form method="get">    
+                    <select name="filtro" class="box" id="filtragem" onchange="this.form.submit()">
+                        <option class="box" value="">Escolha a filtragem: </option>
+                        <option class="box" value="crescente">Crescente de nome (A-Z)</option>
+                        <option class="box" value="decrescente">Decrescente de nome(Z-A)</option>
+                        <option class="box" value="crescente_quantidade">Crescente de quantidade(↑)</option>
+                        <option class="box" value="decrescente_quantidade">Decrescente de quantidade (↓)</option>
+                        <option class="box" value="id">ID</option>
+                    </select>
+                </form>
+
+            </div>
         <div class="box">             
                 <h2>Produtos Cadastrados</h2>
                 <table>
@@ -93,12 +97,12 @@ include('logic.php');
                     <?php foreach ($produtos as $product): ?>
                         <tr>
                             <td><?=$product['id'];?></td>
-                            <td><?=($product['quantidade'] <= 5 ? '⚠️' : '') . htmlspecialchars($product['nome']);?></td>
+                            <td><?=($product['quantidade'] <= 5 ? '⚠️🚨' : '') . htmlspecialchars($product['nome']);?></td>
                             <td><?=$product['quantidade'];?></td>
                             <td><?=$product['unidade'];?></td>
                             <td><?=$product['categoria'];?></td>
                             <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
-                            <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
+                            <td><a class="btn" href="./update.php">Editar</a><a class="delete-btn" href="?delete=<?=$product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>  
                         </tr>
                         <?php endforeach; ?>
                 </table>  

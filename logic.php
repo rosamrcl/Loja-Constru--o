@@ -64,4 +64,11 @@ $produtos = $pdo->query("SELECT product.*, c.nome_categoria AS categoria FROM pr
 $categorias = $pdo->query("SELECT * FROM categoria")->fetchAll(PDO::FETCH_ASSOC);
 
 
+
+
+
+
+
+
+
 ?>
