@@ -2,6 +2,8 @@
 include('config.php');
 include('logic.php');
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,9 @@ include('logic.php');
     <div class="row">
         <div class="box">
             <form  method="POST">
-                <input class="box" type="hidden" name="id" value="<?=$product['id']?>">           
+                
+                <input class="box" type="hidden" name="id" value="<?=$product['id']?>">
+
                 <label for="nome">Nome</label>
                 <input class="box" type="text" name="nome" id="nome" placeholder="Nome"  value="<?=$product['nome']?>">
     
@@ -40,12 +44,12 @@ include('logic.php');
                 <label for="preco">Preço</label>
                 <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010"   maxlength="10" min="0" max="9999999999"  value="<?=$product['preco']?>">
     
-                <select class="box" name="categoria_id" >
-                <option class="box" value="">Categoria</option>
+                <select class="box" name="categoria_id" required>
+                <option class="box" value="<?= $categoria['id'] ?>">Categoria</option>
                 <?php foreach ($categorias as $categoria): ?>
-                    <option value="<?= $categoria['id'] ?>"><?= $categoria['id'] == $product['categoria_id'] ? 'selected': '' ?><?= $categoria['nome']?></option>
+                    <option value="<?= $categoria['id_categoria'] ?>"><?= $categoria['nome_categoria'] ?></option>
                 <?php endforeach; ?>
-                </select>categoria
+                </select>
     
                         
             <input class="btn" name="update" type="submit" value="Atualizar">

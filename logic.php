@@ -60,7 +60,7 @@ if(isset($_GET['filtro'])){
     }
 }
 
-$produtos = $pdo->query("SELECT product.*, c.nome AS categoria FROM produto product JOIN categoria c ON product.categoria_id = c.id ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
+$produtos = $pdo->query("SELECT product.*, c.nome_categoria AS categoria FROM produto product JOIN categoria c ON product.categoria_id = c.id_categoria ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
 $categorias = $pdo->query("SELECT * FROM categoria")->fetchAll(PDO::FETCH_ASSOC);
 
 

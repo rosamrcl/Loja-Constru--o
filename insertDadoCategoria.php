@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 }
 
 
-$stmt = $conn->prepare("INSERT INTO categoria (nome_categoria)  VALUES (?)");
+$stmt = $pdo->prepare("INSERT INTO categoria (nome_categoria)  VALUES (?)");
 
 
 if ($stmt->execute([$nome_categoria])){

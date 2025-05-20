@@ -31,8 +31,8 @@ include('logic.php');
             <input class="btn" type="submit" value="Enviar">
         </form>
 
-        <h2>Inserir Produto</h2>
         <form  method="POST">            
+            
             <label for="nome">Nome</label>
             <input class="box" type="text" name="nome" id="nome" placeholder="Nome" required>
 
@@ -48,9 +48,9 @@ include('logic.php');
             <select class="box" name="categoria_id" required>
             <option class="box" value="<?= $categoria['id'] ?>">Categoria</option>
             <?php foreach ($categorias as $categoria): ?>
-                <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
+                <option value="<?= $categoria['id_categoria'] ?>"><?= $categoria['nome_categoria'] ?></option>
             <?php endforeach; ?>
-            </select>categoria
+            </select>
 
             <input class="btn" name="adicionar" type="submit" value="Enviar">
 
@@ -106,7 +106,7 @@ include('logic.php');
 
         <div class="box">
                 <?php                
-                $stmt=$conn->prepare("SELECT * FROM categoria");
+                $stmt=$pdo->prepare("SELECT * FROM categoria");
                 $stmt->execute();
                 $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>

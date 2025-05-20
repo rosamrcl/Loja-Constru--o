@@ -4,7 +4,7 @@
     $pass="";
     $db="estoque_construcao";
 
-    $conn= new PDO("mysql:host=$host; dbname=$db", $user ,$pass);
+    $pdo= new PDO("mysql:host=$host; dbname=$db", $user ,$pass);
 
 
 ?>
