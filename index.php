@@ -69,7 +69,7 @@ include('logic.php');
                 <select class="box" id="filtragem" onchange="this.form.submit()">
                     <option class="box" value="">Escolha a filtragem: </option>
                     <option class="box" value="crescente">Crescente de nome (A-Z)</option>
-                    <option class="box" value="decrescente">Decrescente de nome(z-A)</option>
+                    <option class="box" value="decrescente">Decrescente de nome(Z-A)</option>
                     <option class="box" value="crescente_quantidade">Crescente de quantidade(↑)</option>
                     <option class="box" value="decrescente_quantidade">Decrescente de quantidade (↓)</option>
                     <option class="box" value="id">ID</option>
