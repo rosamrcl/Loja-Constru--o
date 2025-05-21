@@ -16,8 +16,7 @@ unidade INT NOT NULL,
 preco DECIMAL(10, 2) NOT NULL,
 categoria_id INT NOT NULL,
 FOREIGN KEY (categoria_id) REFERENCES categoria(id_categoria)
-)
-");
+)");
 
 
 ?>
