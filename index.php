@@ -27,7 +27,7 @@ include('logic.php');
 
     <section class="cadastro" id="cadastro">
         <div class="row">
-            <form action="/laragon/www/Back-End/insertDadoCategoria.php" method="POST">
+            <form action="InsertDadoCategoria.php" method="POST">
                 <h2>Cadastrar Categoria</h2>
                 <label for="categoria">Categoria</label>
                 <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
