@@ -32,7 +32,7 @@ include('/laragon/www/Loja-Constru--o/api/logic-categoria.php');
                 <h2>Cadastrar Categoria</h2>
                 <label for="categoria">Categoria</label>
                 <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
-                <input class="btn" type="submit" value="Enviar">
+                <input class="btn" name="adicionar_categoria" type="submit" value="Enviar">
             </form>
 
 
@@ -109,8 +109,27 @@ include('/laragon/www/Loja-Constru--o/api/logic-categoria.php');
                         </tr>
                     <?php endforeach; ?>
                 </table>
-
             </div>
+            <div class="box">
+            <h2>Categorias Cadastrados</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+
+
+                </tr>
+                <?php foreach ($categorias as $categoria): ?>
+                    <tr>
+                        <td><?= $categoria['id_categoria']; ?></td>
+                        <td><?= $categoria['nome_categoria']; ?></td>
+                        <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete_categoria=<?= $categoria['id_categoria']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+        </div>
         </div>
 
 

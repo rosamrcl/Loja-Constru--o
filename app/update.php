@@ -1,8 +1,7 @@
 <?php
-include('config.php');
-include('logic.php');
-include('index.php');
-
+include('/laragon/www/Loja-Constru--o/api/config.php');
+include('/laragon/www/Loja-Constru--o/api/logic.php');
+include('/laragon/www/Loja-Constru--o/api/logic-categoria.php');
 
 ?>
 
@@ -19,7 +18,7 @@ include('index.php');
 
 <body>
     <header class="header" id="header">
-        <a href="#" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
+        <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="#cadastro">Cadastro</a>
             <a href="#estoque">Estoque</a>
