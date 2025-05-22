@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('/laragon/www/Loja-Constru--o/api/config.php');
 
 $pdo = new PDO ($db, $user ,$pass);
 

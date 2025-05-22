@@ -1,6 +1,7 @@
 <?php
-include('config.php');
-include('logic.php');
+include('/laragon/www/Loja-Constru--o/api/config.php');
+include('/laragon/www/Loja-Constru--o/api/logic.php');
+include('/laragon/www/Loja-Constru--o/api/logic-categoria.php');
 
 ?>
 
@@ -27,7 +28,7 @@ include('logic.php');
 
     <section class="cadastro" id="cadastro">
         <div class="row">
-            <form action="InsertDadoCategoria.php" method="POST">
+            <form  method="POST">
                 <h2>Cadastrar Categoria</h2>
                 <label for="categoria">Categoria</label>
                 <input class="box" type="text" name="nome_categoria" id="nome_categoria" placeholder="Categoria">
